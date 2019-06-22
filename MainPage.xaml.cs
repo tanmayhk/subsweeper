@@ -353,9 +353,9 @@ namespace Battleship
                 if (shipsHit == 4)
                 {
                     gameOver = true;
-                    float m = 100 / 10 - (BOARD_SIZE ^ 2);
-                    float b = -(BOARD_SIZE ^ 2) * m;
-                    string message = $"Nice job! Accuracy: {m * (moves) + b:g}";
+                    int bsqaured = BOARD_SIZE * BOARD_SIZE;
+                    double accuracy = (100 / (10 - bsqaured)) * (moves - bsqaured);
+                    string message = $"Nice job! Accuracy: {accuracy:g}%";
                     DialogText.Text = message;
                     DialogGrid.Visibility = Visibility.Visible;
                 }
