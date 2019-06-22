@@ -72,7 +72,7 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="DialogText" Grid.Row="2" Height="200" Width="900" FontSize="90" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" FontFamily="SegoeUISemiBold"></TextBlock>
+            <TextBlock x:Name="DialogText" Grid.Row="2" Height="200" Width="900" FontSize="70" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" FontFamily="SegoeUISemiBold"></TextBlock>
             <Button Click="OnNewGame" Grid.Row="0" Background="#ABABAB" Content="X" FontSize="40" FontFamily="SegoeUISemiBold" Height="100" Width="100"></Button>
         </Grid>
     </Grid>
