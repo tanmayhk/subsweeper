@@ -1,0 +1,5 @@
+1. Add levels (board sizes): StartPage.
+2. Change layout of MainPage.
+3. Get rid of colors, and load specific icon(s) when hit.
+4. Change miss sign.
+5. Add 'How to Play' button on MainPage.
