@@ -361,5 +361,10 @@ namespace Battleship
                 }
             }
         }
+
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
     }
 }
