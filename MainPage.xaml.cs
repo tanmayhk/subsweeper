@@ -333,16 +333,16 @@ namespace Battleship
             }
             else
             {
+                int index = FindShip(row, column);
+                Ship ship = shipList[index];
                 if (hasBeenHit[row, column] == false)
                 {
+                    ship.HitCount += 1;
                     hasBeenHit[row, column] = true;
                     moves += 1;
                     Moves.Text = $"Moves = {moves}";
                 }
 
-                int index = FindShip(row, column);
-                Ship ship = shipList[index];
-                ship.HitCount += 1;
                 if (ship.HitCount == ship.Size)
                 {
                     shipsHit += 1;

@@ -52,23 +52,23 @@
                 <Button Grid.Row="3" Grid.Column="2" Click="OnFired" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" FontSize="60" FontFamily="SegoeUISemibold"/>
                 <Button Grid.Row="3" Grid.Column="3" Click="OnFired" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" FontSize="60" FontFamily="SegoeUISemibold"/>
             </Grid>
-            <Grid Grid.Column ="0" Grid.Row="0" Grid.RowSpan="2" Background="LightGray" Margin="8,16,8,16">
+            <Grid Grid.Column ="0" Grid.Row="0" Grid.RowSpan="2" Background="LightGray" Margin="16,16,8,16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Foreground="Black"  HorizontalAlignment="Center" Text="Battleship" TextWrapping="Wrap" FontSize="60" FontFamily="Segoe UI Semi Bold"/>
-                <Button Grid.Column="0" Grid.Row="2" Background="LightSlateGray" Foreground="White" Content="How to Play" HorizontalAlignment="Center" FontSize="32" FontFamily="SegoeUISemibold" Height="150" VerticalAlignment="Center"/>
-                <Button Grid.Column="0" Grid.Row="1" Background="LightSlateGray" Foreground="White" Content="New Game" Click="OnNewGame" HorizontalAlignment="Center" FontSize="32" FontFamily="SegoeUISemibold" Height="150" VerticalAlignment="Center"/>
+                <Button x:Name="HowtoPlay" Grid.Column="0" Grid.Row="2" Background="LightSlateGray" Foreground="White" Content="How to Play" HorizontalAlignment="Center" FontSize="32" FontFamily="SegoeUISemibold" Height="150" VerticalAlignment="Center"/>
+                <Button Grid.Column="0" Grid.Row="1" Background="LightSlateGray" Foreground="White" Content="New Game" Click="OnNewGame" HorizontalAlignment="Center" Height="{Binding ActualHeight, ElementName=HowtoPlay, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=HowtoPlay, Mode=OneWay}" FontSize="32" FontFamily="SegoeUISemibold" VerticalAlignment="Center"/>
             </Grid>
-            <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Background="LightGray" Margin="8,16,8,16">
+            <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Background="LightGray" Margin="8,16,16,16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="Stop_Button" Background="LightGray" Click="Stop_Click" Grid.Row="0" Content="&#xE8BB;" Width="{Binding ActualHeight, ElementName=Stop_Button, Mode=OneWay}" HorizontalAlignment="Right" FontSize="50" FontFamily="Segoe MDL2 Assets" Height="150" VerticalAlignment="Top"/>
+                <Button x:Name="Stop_Button" Margin="8" Background="LightSlateGray" Foreground="White" Click="Stop_Click" Grid.Row="0" Content="&#xE8BB;" Width="{Binding ActualHeight, ElementName=Stop_Button, Mode=OneWay}" HorizontalAlignment="Right" FontSize="50" FontFamily="Segoe MDL2 Assets" Height="100" VerticalAlignment="Top"/>
                 <TextBlock Grid.Column="2" Grid.Row ="1" Foreground="Black" HorizontalAlignment="Stretch" x:Name="ShipScore" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0" Height="200" Width="310" FontSize="32" FontFamily="Segoe UI Semi Bold"/>
                 <TextBlock Grid.Row ="2" Foreground="Black" HorizontalAlignment="Center" x:Name="Moves" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Margin="2" FontSize="32" FontFamily="Segoe UI Semi Bold"/>
             </Grid>
