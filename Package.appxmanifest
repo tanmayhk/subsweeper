@@ -3,7 +3,7 @@
   <Identity Name="0ef25930-29a1-47d6-9969-63196c028c03" Publisher="CN=tanmay" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="0ef25930-29a1-47d6-9969-63196c028c03" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Battleship</DisplayName>
+    <DisplayName>Sub Sweeper</DisplayName>
     <PublisherDisplayName>tanmay</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -14,8 +14,8 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Battleship.App">
-      <uap:VisualElements DisplayName="Battleship" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Battleship" BackgroundColor="transparent">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Sub Sweeper.App">
+      <uap:VisualElements DisplayName="Sub Sweeper" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Sub Sweeper" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

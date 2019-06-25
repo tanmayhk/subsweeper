@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
+
 namespace Battleship
 {
     /// <summary>
@@ -54,26 +55,22 @@ namespace Battleship
         private bool[,] hasShip;
         private bool[,] hasBeenHit;
         SolidColorBrush miss_grey = new SolidColorBrush(Color.FromArgb(255, (byte)82, (byte)82, (byte)82));
-        SolidColorBrush miss_text  = new SolidColorBrush(Color.FromArgb(255, (byte)255, (byte)255, (byte)255));
+        SolidColorBrush miss_text = new SolidColorBrush(Color.FromArgb(255, (byte)255, (byte)255, (byte)255));
         List<int> sizes = new List<int>();
         int shipsHit = 0;
         int shipCount = 4;
         int moves = 0;
         Random rnd;
-
         public MainPage()
         {
             this.InitializeComponent();
             rnd = new Random();
             Loaded += MainPage_Loaded;
-
         }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             BOARD_SIZE = (int)e.Parameter;
-
         }
         private void CreateBoard(int boardSize)
         {
@@ -86,15 +83,13 @@ namespace Battleship
                 ShipGrid.RowDefinitions.Add(new RowDefinition());
                 ShipGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-
             Button[,] buttonGrid = new Button[BOARD_SIZE, BOARD_SIZE];
-            for(int row = 0; row < BOARD_SIZE; row++)
+            for (int row = 0; row < BOARD_SIZE; row++)
             {
                 for (int col = 0; col < BOARD_SIZE; col++)
                 {
                     var button = new Button();
                     button.Click += OnFired;
-                    
                     button.HorizontalAlignment = HorizontalAlignment.Stretch;
                     button.VerticalAlignment = VerticalAlignment.Stretch;
                     button.Margin = new Thickness(2, 2, 2, 2);
@@ -227,8 +222,8 @@ namespace Battleship
             shipCount = 4;
             moves = 0;
             ShipScore.Text = $"Ships Left: {shipCount}";
-            Moves.Text = $"Moves = {moves}"; 
-            
+            Moves.Text = $"Moves = {moves}";
+
         }
 
         private int FindShip(int row, int column)
@@ -287,7 +282,8 @@ namespace Battleship
                 {
                     i += 1;
                 }
-                if (ship.IsVertical == false)
+
+               if (ship.IsVertical == false)
                 {
                     j += 1;
                 }
@@ -309,13 +305,18 @@ namespace Battleship
             }
 
         }
+
+        private void CloseDialog_Click(object sender, RoutedEventArgs e)
+        {
+            DialogGrid.Visibility = Visibility.Collapsed;
+        }
         private async void OnFired(object sender, RoutedEventArgs e)
         {
             if (gameOver)
             {
                 return;
             }
-            var button = sender as Button; 
+            var button = sender as Button;
             int row = Grid.GetRow(button);
             int column = Grid.GetColumn(button);
             if (hasShip[row, column] == false)
@@ -349,7 +350,7 @@ namespace Battleship
                     ShipScore.Text = $"Ships Left: {4 - shipsHit}";
                     SinkShip(index);
                 }
-                
+
                 if (shipsHit == 4)
                 {
                     gameOver = true;
