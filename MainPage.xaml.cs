@@ -360,11 +360,11 @@ namespace SubSweeper
             int column = Grid.GetColumn(button);
             if (hasShip[row, column] == false)
             {
+                moves += 1;
+                Moves.Text = $"{moves}";
                 if (hasBeenHit[row, column] == false)
                 {
                     hasBeenHit[row, column] = true;
-                    moves += 1;
-                    Moves.Text = $"{moves}";
                 }
             }
             else

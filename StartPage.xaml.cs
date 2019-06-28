@@ -100,10 +100,12 @@ namespace SubSweeper
 
         private void HowToPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            string message = "SubSweeper is a game where you have to find four submarines that are hidden throughout the board. Each game has four submarine sizes that span one, two, three, and four squares, as well as four different board sizes: a 4 x 4, a 5 x 5, a 6 x 6, and a 7 x 7. \nThe goal of the game is to click the buttons and hit all the submarines while maximizing your final score or accuracy. It is dependent on the size of the board and the number of moves you have made. The maximum is hundred, while the minimum is 0. To hit, you must dwell or click on a certain button on the board. \n________________\nWhen you hit a part of a submarine, you will see ____. When you hit every part, you will see the entire sub. If you miss, you will not see anything. So, you must remember where you have already clicked. After you have sunk all four subs, the whole board will turn blue, and you will see your final score or accuracy. \nDuring the game, if you need to stop and think you can use the pause button (____). It lets you pause and plan your moves. Press play (_____) to resume. The exit button (____) allows you to close the game entirely. Finally, the New Game button takes you back to the home page so you can select a board size and start a new game. \nEnjoy!";
-            HowtoPlay.Text = message;
-            HowtoPlay.Visibility = Visibility.Visible;
-            HowtoPlayBackground.Visibility = Visibility.Visible;
+            HowtoPlayGrid.Visibility = Visibility.Visible;
+        }
+
+        private void ClosePlay_Click(object sender, RoutedEventArgs e)
+        {
+            HowtoPlayGrid.Visibility = Visibility.Collapsed;
         }
     }
 }
