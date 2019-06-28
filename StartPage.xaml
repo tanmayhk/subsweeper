@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="Battleship.StartPage"
+    x:Class="SubSweeper.StartPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Battleship"
+    xmlns:local="using:SubSweeper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -10,24 +10,38 @@
 
     <Grid Background="LightSlateGray">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="16*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <TextBlock Foreground="White" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Battleship" TextWrapping="Wrap" FontSize="100" FontFamily="Segoe UI Semi Bold" Grid.ColumnSpan="2"/>
-        <Button Background="LightGray" Grid.Row="0" Content="How to Play" VerticalAlignment="Stretch" HorizontalAlignment="Left" FontSize="45" FontFamily="SegoeUISemibold" Height="150" Margin="20, 0, 0, 0"/>
-        <Button Background="LightGray" Name="Stop" Grid.Row="0" Click="Stop_Click" Content="&#xE8BB;" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="80" FontFamily="Segoe MDL2 Assets" Height="150" Margin="0, 0, 0,0" Width="{Binding ActualHeight, ElementName=Stop, Mode=OneWay}"/>
-        <Grid x:Name="LevelsGrid" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Button Background="LightGray" Name="Size4" Click="Size4_Click"  Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="400" Height="{Binding ActualWidth, ElementName=Size4, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Content="4 x 4"/>
-            <Button Background="LightGray" Name="Size5" Click="Size5_Click" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="400" Height="{Binding ActualWidth, ElementName=Size5, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Content="5 x 5"/>
-            <Button Background="LightGray" Name="Size6" Click="Size6_Click" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="400" Height="{Binding ActualWidth, ElementName=Size6, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Content="6 x 6"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="LightGray" Grid.Row="0" Grid.RowSpan="2" Margin="16, 16, 16, 8"/>
+            <TextBlock Foreground="#2B3990" Grid.Column="0" Grid.Row="0" Width="700" Grid.RowSpan="2" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="SubSweeper" TextWrapping="Wrap" FontSize="100" FontFamily="Segoe UI Semi Bold" Grid.ColumnSpan="2"/>
+            <Button x:Name="HowToPlayButton" Background="LightSlateGray" Click="HowToPlayButton_Click" Grid.Row="0" Grid.RowSpan="2" Content="How to Play" VerticalAlignment="Stretch" Foreground="White" HorizontalAlignment="Left" FontSize="45" FontFamily="SegoeUISemibold" Height="210" Margin="70, 0, 0, 0"/>
+            <Button Background="LightSlateGray" Foreground="White" Name="Stop" Grid.Row="0" Grid.RowSpan="2" Click="Stop_Click" Content="&#xE8BB;" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="80" FontFamily="Segoe MDL2 Assets" Height="140" Margin="0, 70, 70,0" Width="{Binding ActualHeight, ElementName=Stop, Mode=OneWay}"/>
+            <Image x:Name="Subs" Source="/Assets/subs_inline.png" Width="700" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Image>
         </Grid>
-        <TextBlock Foreground="White" Text="Select a Size" Grid.Row="2" FontSize="55" FontFamily="SegoeUISemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
+        <Grid x:Name="LevelsGrid" Grid.Row="1" Background="LightGray" Margin="16, 8, 16, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="367*"/>
+                <ColumnDefinition Width="367*"/>
+                <ColumnDefinition Width="367*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="297*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="Size4" Click="Size4_Click"  Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="300" Height="{Binding ActualWidth, ElementName=Size4, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Margin="34,113,33,112"/>
+            <Button Name="Size5" Click="Size5_Click" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="300" Height="{Binding ActualWidth, ElementName=Size5, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Margin="34,113,33,112"/>
+            <Button Name="Size6" Click="Size6_Click" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="300" Height="{Binding ActualWidth, ElementName=Size6, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Margin="34,113,33,112"/>
+            <Button Name="Size7" Click="Size7_Click" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="300" Height="{Binding ActualWidth, ElementName=Size7, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Grid.ColumnSpan="2" Margin="34,113,33,112"/>
+        </Grid>
+        <Rectangle Fill="LightGray" Grid.Row="2" Margin="16, 0, 16, 16"/>
+        <TextBlock Foreground="Black" Text="Select a Size" Grid.Row="2" FontSize="55" FontFamily="SegoeUISemiBold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="HowtoPlay" Visibility="Collapsed" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="675" Width="1200"/>
+        <Rectangle x:Name="HowtoPlayBackground" Fill="LightSlateGray" Visibility="Collapsed" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="675" Width="1200"/>
     </Grid>
 </Page>

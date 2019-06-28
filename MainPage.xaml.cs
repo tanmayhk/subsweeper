@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Input.GazeInteraction;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,18 +8,20 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Popups;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 
-namespace Battleship
+namespace SubSweeper
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -44,6 +47,7 @@ namespace Battleship
     public sealed partial class MainPage : Page
     {
         public int BOARD_SIZE = 4;
+        public bool isPaused = false;
         List<Ship> shipList = new List<Ship>();
         SolidColorBrush[] shipColors = new SolidColorBrush[] {
                 new SolidColorBrush(Color.FromArgb(255, (byte)255, (byte)192, (byte)0)),
@@ -57,6 +61,7 @@ namespace Battleship
         SolidColorBrush miss_grey = new SolidColorBrush(Color.FromArgb(255, (byte)82, (byte)82, (byte)82));
         SolidColorBrush miss_text = new SolidColorBrush(Color.FromArgb(255, (byte)255, (byte)255, (byte)255));
         List<int> sizes = new List<int>();
+        List<bool> isSunk = new List<bool>() { false, false, false, false };
         int shipsHit = 0;
         int shipCount = 4;
         int moves = 0;
@@ -221,8 +226,8 @@ namespace Battleship
             shipsHit = 0;
             shipCount = 4;
             moves = 0;
-            ShipScore.Text = $"Ships Left: {shipCount}";
-            Moves.Text = $"Moves = {moves}";
+            ShipScore.Text = $"{shipCount}";
+            Moves.Text = $"{moves}";
 
         }
 
@@ -268,16 +273,48 @@ namespace Battleship
             return null;
         }
 
+        private void AssignImages(Ship ship)
+        {
+            int h_counter = 0;
+            int v_counter = 0;
+            int counter = 0;
+            string ship_type = "";
+            while (counter < ship.Size)
+            {
+                if (ship.IsVertical)
+                {
+                    ship_type = "v";
+                    v_counter = counter;
+                }
+                else
+                {
+                    ship_type = "h";
+                    h_counter = counter;
+                }
+                Button button = GetShipButton(ship.Row + v_counter, ship.Column + h_counter);
+                string urisource = $"/Assets/ship_{ship.Size}_{counter}_{ship_type}.png";
+                button.Padding = new Thickness(0, 0, 0, 0);
+                button.BorderThickness = new Thickness(0, 0, 0, 0);
+                Image img = new Image()
+                {
+                    Source = new BitmapImage(new Uri(this.BaseUri, urisource)),
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+                button.Content = img;
+                counter += 1;
+            }
+        }
         private void SinkShip(int index)
         {
             Ship ship = shipList[index];
             int i = ship.Row;
             int j = ship.Column;
             int count = ship.Size;
+            var button = GetShipButton(i, j);
             while (count > 0)
             {
-                var button = GetShipButton(i, j);
-                button.Background = shipColors[index];
+//                button.Background = shipColors[index];
                 if (ship.IsVertical == true)
                 {
                     i += 1;
@@ -289,6 +326,7 @@ namespace Battleship
                 }
                 count -= 1;
             }
+            AssignImages(ship);
         }
 
         private void OnNewGame(object sender, RoutedEventArgs e)
@@ -296,20 +334,21 @@ namespace Battleship
             Frame.Navigate(typeof(StartPage), null);
         }
 
-        private void OnlyMiss(Button shipButton, int i, int j)
+        private void OnlySea()
         {
-            if (hasShip[i, j] == false)
+            for (int i = 0; i < BOARD_SIZE; i++)
             {
-                shipButton.Content = "";
-                shipButton.Background = new SolidColorBrush(Color.FromArgb(255, (byte)175, (byte)171, (byte)171));
+                for (int j = 0; j < BOARD_SIZE; j++)
+                {
+                    Button shipButton = GetShipButton(i, j);
+                    if (hasShip[i, j] == false)
+                    {
+                        shipButton.Background = new SolidColorBrush(Color.FromArgb(255, (byte)43, (byte)57, (byte)144));
+                    }
+                }
             }
-
         }
 
-        private void CloseDialog_Click(object sender, RoutedEventArgs e)
-        {
-            DialogGrid.Visibility = Visibility.Collapsed;
-        }
         private async void OnFired(object sender, RoutedEventArgs e)
         {
             if (gameOver)
@@ -321,15 +360,11 @@ namespace Battleship
             int column = Grid.GetColumn(button);
             if (hasShip[row, column] == false)
             {
-                button.Background = miss_grey;
-                button.Foreground = miss_text;
-                button.Content = "O";
-
                 if (hasBeenHit[row, column] == false)
                 {
                     hasBeenHit[row, column] = true;
                     moves += 1;
-                    Moves.Text = $"Moves = {moves}";
+                    Moves.Text = $"{moves}";
                 }
             }
             else
@@ -341,14 +376,25 @@ namespace Battleship
                     ship.HitCount += 1;
                     hasBeenHit[row, column] = true;
                     moves += 1;
-                    Moves.Text = $"Moves = {moves}";
+                    Moves.Text = $"{moves}";
+                    string urisource = $"/Assets/boom.png";
+                    button.Padding = new Thickness(0, 0, 0, 0);
+                    button.BorderThickness = new Thickness(0, 0, 0, 0);
+                    Image img = new Image()
+                    {
+                        Source = new BitmapImage(new Uri(this.BaseUri, urisource)),
+                        VerticalAlignment = VerticalAlignment.Center,
+                        HorizontalAlignment = HorizontalAlignment.Center
+                    };
+                    button.Content = img;
                 }
 
-                if (ship.HitCount == ship.Size)
+                if (ship.HitCount == ship.Size && isSunk[index] == false)
                 {
                     shipsHit += 1;
-                    ShipScore.Text = $"Ships Left: {4 - shipsHit}";
+                    ShipScore.Text = $"{4 - shipsHit}";
                     SinkShip(index);
+                    isSunk[index] = true;
                 }
 
                 if (shipsHit == 4)
@@ -356,9 +402,16 @@ namespace Battleship
                     gameOver = true;
                     int bsqaured = BOARD_SIZE * BOARD_SIZE;
                     double accuracy = (100 / (10 - bsqaured)) * (moves - bsqaured);
-                    string message = $"Nice job! Accuracy: {accuracy:g}%";
-                    DialogText.Text = message;
-                    DialogGrid.Visibility = Visibility.Visible;
+                    string message = $"Game Over! \nAccuracy: {accuracy:g}%";
+                    ShipsLeftText.Visibility = Visibility.Collapsed;
+                    ShipScore.Visibility = Visibility.Collapsed;
+                    MovesText.Visibility = Visibility.Collapsed;
+                    Moves.Visibility = Visibility.Collapsed;
+                    Accuracy.Text = message;
+                    Accuracy.FontWeight = FontWeights.SemiBold;
+                    Accuracy.Visibility = Visibility.Visible;
+                    OnlySea();
+                    
                 }
             }
         }
@@ -366,6 +419,31 @@ namespace Battleship
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Exit();
+        }
+
+        private void Pause_Button_Click(object sender, RoutedEventArgs e)
+        {
+            isPaused = ! isPaused;
+            if (! isPaused)
+            {
+                GazeInput.SetInteraction(ShipGrid, Interaction.Disabled);
+                Pause_Button.Content = "\uE769";
+                foreach (var child in ShipGrid.Children)
+                {
+                    Button button = child as Button;
+                    button.IsEnabled = true;
+                }
+            }
+            if (isPaused)
+            {
+                GazeInput.SetInteraction(ShipGrid, Interaction.Enabled);
+                Pause_Button.Content = "\uE768";
+                foreach (var child in ShipGrid.Children)
+                {
+                    Button button = child as Button;
+                    button.IsEnabled = false;
+                }
+            }
         }
     }
 }

@@ -110,6 +110,33 @@
     <None Include="Battleship_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\4x4.png" />
+    <Content Include="Assets\5x5.png" />
+    <Content Include="Assets\6x6.png" />
+    <Content Include="Assets\7x7.png" />
+    <Content Include="Assets\boom.png" />
+    <Content Include="Assets\ship_1_0_h.png" />
+    <Content Include="Assets\ship_1_0_v.png" />
+    <Content Include="Assets\ship_2_0_h.png" />
+    <Content Include="Assets\ship_2_0_v.png" />
+    <Content Include="Assets\ship_2_1_h.png" />
+    <Content Include="Assets\ship_2_1_v.png" />
+    <Content Include="Assets\ship_3_0_h.png" />
+    <Content Include="Assets\ship_3_0_v.png" />
+    <Content Include="Assets\ship_3_1_h.png" />
+    <Content Include="Assets\ship_3_1_v.png" />
+    <Content Include="Assets\ship_3_2_h.png" />
+    <Content Include="Assets\ship_3_2_v.png" />
+    <Content Include="Assets\ship_4_0_h.png" />
+    <Content Include="Assets\ship_4_0_v.png" />
+    <Content Include="Assets\ship_4_1_h.png" />
+    <Content Include="Assets\ship_4_1_v.png" />
+    <Content Include="Assets\ship_4_2_h.png" />
+    <Content Include="Assets\ship_4_2_v.png" />
+    <Content Include="Assets\ship_4_3_h.png" />
+    <Content Include="Assets\ship_4_3_v.png" />
+    <Content Include="Assets\subs.png" />
+    <Content Include="Assets\subs_inline.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
