@@ -400,16 +400,17 @@ namespace SubSweeper
                 if (shipsHit == 4)
                 {
                     gameOver = true;
-                    int bsqaured = BOARD_SIZE * BOARD_SIZE;
-                    double accuracy = (100 / (10 - bsqaured)) * (moves - bsqaured);
-                    string message = $"Game Over! \nAccuracy: {accuracy:g}%";
+                    string message = $"Moves: {moves:g}";
                     ShipsLeftText.Visibility = Visibility.Collapsed;
                     ShipScore.Visibility = Visibility.Collapsed;
                     MovesText.Visibility = Visibility.Collapsed;
                     Moves.Visibility = Visibility.Collapsed;
-                    Accuracy.Text = message;
-                    Accuracy.FontWeight = FontWeights.SemiBold;
-                    Accuracy.Visibility = Visibility.Visible;
+                    GameOver.Text = $"Game Over!";
+                    GameOver.FontWeight = FontWeights.SemiBold;
+                    GameOver.Visibility = Visibility.Visible;
+                    TotalMoves.Text = message;
+                    TotalMoves.FontWeight = FontWeights.SemiBold;
+                    TotalMoves.Visibility = Visibility.Visible;
                     OnlySea();
                     
                 }

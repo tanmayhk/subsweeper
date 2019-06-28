@@ -19,14 +19,14 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <Rectangle Fill="LightGray" Grid.Row="0" Grid.RowSpan="2" Margin="16, 16, 16, 8"/>
+                <Rectangle Fill="White" Grid.Row="0" Grid.RowSpan="2" Margin="16, 16, 16, 8"/>
                 <TextBlock Foreground="#2B3990" Grid.Column="0" Grid.Row="0" Width="700" Grid.RowSpan="2" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="SubSweeper" TextWrapping="Wrap" FontSize="100" FontFamily="Segoe UI Semi Bold" Grid.ColumnSpan="2"/>
-                <Button x:Name="HowToPlayButton" Background="LightSlateGray" Click="HowToPlayButton_Click" Grid.Row="0" Grid.RowSpan="2" Content="How to Play" VerticalAlignment="Stretch" Foreground="White" HorizontalAlignment="Left" FontSize="45" FontFamily="SegoeUISemibold" Height="210" Margin="70, 0, 0, 0"/>
+                <Button x:Name="HowToPlayButton" Background="LightSlateGray" Click="HowToPlayButton_Click" Grid.Row="0" Grid.RowSpan="2" Content="How to Play" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Left" FontSize="45" FontFamily="SegoeUISemibold" Height="210" Margin="50, 8, 0, 0"/>
                 <Button Background="LightSlateGray" Foreground="White" Name="Stop" Grid.Row="0" Grid.RowSpan="2" Click="Stop_Click" Content="&#xE8BB;" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="80" FontFamily="Segoe MDL2 Assets" Height="140" Margin="0, 70, 70,0" Width="{Binding ActualHeight, ElementName=Stop, Mode=OneWay}"/>
                 <Image x:Name="Subs" Source="/Assets/subs_inline.png" Width="700" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Image>
             </Grid>
 
-            <Grid x:Name="LevelsGrid" Grid.Row="1" Background="LightGray" Margin="16, 8, 16, 0">
+            <Grid x:Name="LevelsGrid" Grid.Row="1" Background="White" Margin="16, 8, 16, 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="367*"/>
                     <ColumnDefinition Width="367*"/>
@@ -39,28 +39,31 @@
                 <Button Name="Size6" Click="Size6_Click" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="300" Height="{Binding ActualWidth, ElementName=Size6, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Margin="34,113,33,112"/>
                 <Button Name="Size7" Click="Size7_Click" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="300" Height="{Binding ActualWidth, ElementName=Size7, Mode=OneWay}" FontSize="80" FontFamily="SegoeUISemibold" Grid.ColumnSpan="2" Margin="34,113,33,112"/>
             </Grid>
-            <Rectangle Fill="LightGray" Grid.Row="2" Margin="16, 0, 16, 16"/>
-            <TextBlock Foreground="Black" Text="Select a Size" Grid.Row="2" FontSize="55" FontFamily="SegoeUISemiBold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Rectangle Fill="White" Grid.Row="2" Margin="16, 0, 16, 16"/>
+            <TextBlock Foreground="#2B3990" Text="Select a Size" Grid.Row="1" FontSize="55" FontFamily="SegoeUISemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         </Grid>
-        <Grid  x:Name="HowtoPlayGrid" Visibility="Collapsed" Background="#AFABAB" HorizontalAlignment="Center" VerticalAlignment="Center" Height="800" Width="1200">
+        <Grid  x:Name="HowtoPlayGrid" Visibility="Collapsed" Background="#FFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center" Height="750" Width="1300">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
-            <Border BorderThickness="2" BorderBrush="#2B3990" Grid.Row="1">
+            <Border BorderThickness="15, 0, 15, 15" BorderBrush="#F15A22" Grid.Row="1">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock x:Name="HowtoPlayText" Margin="16" TextWrapping="Wrap" FontSize="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="">
-                There are four submarines of sizes one, two, three, and four hidden in the board. Select a board size, and dwell with your eyes or click to fire.
+                    <TextBlock x:Name="HowtoPlayText" LineHeight="2" Foreground="#282828" Margin="16" TextWrapping="Wrap" FontSize="32" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="" FontFamily="Segoe UI">
+                There are four submarines of sizes one, two, three, and four hidden in the board. Select a board size, and dwell with your eyes or click to fire on a square.
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap" Text="When you hit, you will see a flash.  After you hit every part of the submarine, it sinks and the whole sub will be revealed." FontSize="45" Margin="16, 0, 0, 0"/>
-                    <TextBlock TextWrapping="Wrap" Text="The game ends when you have sunk all four submarines. " FontSize="45" Margin="16, 0, 0, 0"/>
-                    <TextBlock TextWrapping="Wrap" Text="Go on and test your accuracy. Enjoy!" FontSize="60" Margin="16, 0, 0, 0"/>
+                    <TextBlock TextWrapping="Wrap" LineHeight="2" Foreground="#282828" Text="" FontSize="32" Margin="16, 0, 0, 0" FontFamily="Segoe UI"/>
+                    <TextBlock TextWrapping="Wrap" LineHeight="2" Foreground="#282828" Text="When you hit, you will see a flash. Each part of a sub is hidden in a square. After you hit every part of the submarine, it sinks and the whole sub will be revealed." FontSize="32" Margin="16, 0, 0, 0" FontFamily="Segoe UI"/>
+                    <TextBlock TextWrapping="Wrap" LineHeight="2" Foreground="#282828" Text="" FontSize="32" Margin="16, 0, 0, 0" FontFamily="Segoe UI"/>
+                    <TextBlock TextWrapping="Wrap" LineHeight="2" Foreground="#282828" Text="The game ends when you have sunk all four submarines. " FontSize="32" Margin="16, 0, 0, 0" FontFamily="Segoe UI"/>
+                    <TextBlock TextWrapping="Wrap" LineHeight="2" Foreground="#282828" Text="" FontSize="32" Margin="16, 0, 0, 0" FontFamily="Segoe UI"/>
+                    <TextBlock TextWrapping="Wrap" Foreground="#2B3990" Text="Try and do it in as few moves as possible. Enjoy!" FontSize="40" Margin="16, 0, 0, 0" FontFamily="Segoe UI Semibold"/>
                 </StackPanel>
             </Border>
-            <Border BorderThickness="2" BorderBrush="#2B3990" Grid.Row="0">
-                <TextBlock Text="How to Play SubSweeper" FontSize="80" VerticalAlignment="Center" Margin="16"/>
+            <Border BorderThickness="15, 15, 15, 0" BorderBrush="#F15A22" Grid.Row="0">
+                <TextBlock Text="How to Play SubSweeper" FontSize="60" VerticalAlignment="Center" Margin="16" Foreground="#2B3990" FontFamily="Segoe UI Semibold"/>
             </Border>
-            <Button x:Name="ClosePlay" HorizontalAlignment="Right" Click="ClosePlay_Click" FontSize="80" Content="&#xE8BB;"  Foreground="#343434" Height="{Binding ActualWidth, ElementName=ClosePlay}" Width="100" Background="#AFABAB" FontFamily="Segoe MDL2 Assets" Margin="16"/>
+            <Button x:Name="ClosePlay" HorizontalAlignment="Right" Click="ClosePlay_Click" FontSize="60" Content="&#xE8BB;" Foreground="#F15A22" Height="100" Width="100" Background="#FFFFFF" FontFamily="Segoe MDL2 Assets" Margin="16, 5, 23, 16"/>
         </Grid>
     </Grid>
 </Page>

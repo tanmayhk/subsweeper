@@ -53,17 +53,17 @@
                 <Button Grid.Row="3" Grid.Column="3" Click="OnFired" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2" FontSize="70" FontFamily="Segoe MDL2 Assets"/>
 
             </Grid>
-            <Grid Grid.Column ="0" Grid.Row="0" Grid.RowSpan="2" Background="LightGray" Margin="16,16,8,16">
+            <Grid Grid.Column ="0" Grid.Row="0" Grid.RowSpan="2" Background="White" Margin="16,16,8,16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Foreground="#2B3990"  HorizontalAlignment="Center" Text="SubSweeper" TextWrapping="Wrap" FontSize="50" FontFamily="Segoe UI Semi Bold"/>
-                <Image x:Name="Subs" Source="/Assets/subs.png" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="{Binding ActualWidth, ElementName=Subs, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=NewGame, Mode=OneWay}"></Image>
-                <Button x:Name="NewGame" Grid.Column="0" Grid.Row="1" Background="LightSlateGray" Foreground="White" Content="New Game" Click="OnNewGame" HorizontalAlignment="Center" Height="100" Width="250" FontSize="32" FontFamily="SegoeUISemibold" VerticalAlignment="Top"/>
+                <Image x:Name="Subs" Source="/Assets/subs.png" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="{Binding ActualWidth, ElementName=Subs, Mode=OneWay}" Width="250"></Image>
+                <Button x:Name="NewGame" Grid.Column="0" Grid.Row="1" Background="LightSlateGray" Foreground="White" Content="New Game" Click="OnNewGame" HorizontalAlignment="Center" Height="150" Width="250" FontSize="32" FontFamily="SegoeUISemibold" VerticalAlignment="Center"/>
             </Grid>
-            <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Background="LightGray" Margin="8,16,16,16">
+            <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Background="White" Margin="8,16,16,16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -75,10 +75,11 @@
                 <Button x:Name="Stop_Button" Margin="8" Background="LightSlateGray" Foreground="White" Click="Stop_Click" Grid.Row="0" Content="&#xE8BB;" Width="{Binding ActualHeight, ElementName=Stop_Button, Mode=OneWay}" HorizontalAlignment="Right" FontSize="50" FontFamily="Segoe MDL2 Assets" Height="100" VerticalAlignment="Top"/>
                 <Button x:Name="Pause_Button" Margin="8" Background="LightSlateGray" Foreground="White" Click="Pause_Button_Click" Grid.Row="0" Content="&#xE769;" Width="{Binding ActualHeight, ElementName=Stop_Button, Mode=OneWay}" HorizontalAlignment="Left" FontSize="50" FontFamily="Segoe MDL2 Assets" Height="100" VerticalAlignment="Top"/>
                 <TextBlock x:Name="ShipsLeftText" Grid.Column="2" Grid.Row ="1" Foreground="#2B3990" HorizontalAlignment="Left" Text="Subs Left:" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="32,0,8,0"  FontSize="35" FontFamily="Segoe UI Semi Bold"/>
-                <TextBlock Grid.Column="2" Grid.Row ="2" Foreground="#2B3990" HorizontalAlignment="Left" x:Name="ShipScore" TextWrapping="Wrap" VerticalAlignment="Top" Margin="32, 0, 8, 0" FontSize="60" FontFamily="Segoe UI Semi Bold"/>
+                <TextBlock Grid.Column="2" Grid.Row ="2" Foreground="#F15A22" HorizontalAlignment="Left" x:Name="ShipScore" TextWrapping="Wrap" VerticalAlignment="Top" Margin="32, 0, 8, 0" FontSize="60" FontFamily="Segoe UI Semi Bold"/>
                 <TextBlock x:Name="MovesText" Grid.Row ="3" Foreground="#2B3990" HorizontalAlignment="Left" Text="Moves:" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="32, 0, 8, 0" FontSize="35" FontFamily="Segoe UI Semi Bold"/>
-                <TextBlock x:Name="Moves" Grid.Row ="4" Foreground="#2B3990" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="32, 0, 8, 0" FontSize="60" FontFamily="Segoe UI Semi Bold"/>
-                <TextBlock x:Name="Accuracy" Grid.Row ="2" Grid.RowSpan="3" Foreground="#2B3990" HorizontalAlignment="Center" Visibility="Collapsed" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Margin="16, 0, 8, 0" FontSize="50" FontFamily="Segoe UI Semi Bold"/>
+                <TextBlock x:Name="Moves" Grid.Row ="4" Foreground="#F15A22" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="32, 0, 8, 0" FontSize="60" FontFamily="Segoe UI Semi Bold"/>
+                <TextBlock x:Name="GameOver" Grid.Row ="2" Grid.RowSpan="3" Foreground="#F15A22" HorizontalAlignment="Left" Visibility="Collapsed" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="16, 75, 8, 0" FontSize="50" FontFamily="Segoe UI Semi Bold"/>
+                <TextBlock x:Name="TotalMoves" Grid.Row ="2" Grid.RowSpan="3" Foreground="#2B3990" HorizontalAlignment="Left" Visibility="Collapsed" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="16, 155, 8, 0" FontSize="40" FontFamily="Segoe UI Semi Bold"/>
             </Grid>
         </Grid>
     </Grid>
