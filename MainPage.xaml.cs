@@ -349,7 +349,7 @@ namespace SubSweeper
             }
         }
 
-        private async void OnFired(object sender, RoutedEventArgs e)
+        private void OnFired(object sender, RoutedEventArgs e)
         {
             if (gameOver)
             {
