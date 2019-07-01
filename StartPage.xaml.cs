@@ -39,6 +39,8 @@ namespace SubSweeper
             Size4.Padding = new Thickness(0, 0, 0, 0);
             Size4.BorderThickness = new Thickness(0, 0, 0, 0);
             Size4.Content = img1;
+            Size4.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            Size4.VerticalContentAlignment = VerticalAlignment.Stretch;
 
             string urisource2 = $"/Assets/5x5.png"; 
             Image img2 = new Image()
@@ -50,6 +52,8 @@ namespace SubSweeper
             Size5.Padding = new Thickness(0, 0, 0, 0);
             Size5.BorderThickness = new Thickness(0, 0, 0, 0);
             Size5.Content = img2;
+            Size5.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            Size5.VerticalContentAlignment = VerticalAlignment.Stretch;
 
             string urisource3 = $"/Assets/6x6.png";
             Image img3 = new Image()
@@ -61,6 +65,8 @@ namespace SubSweeper
             Size6.Padding = new Thickness(0, 0, 0, 0);
             Size6.BorderThickness = new Thickness(0, 0, 0, 0);
             Size6.Content = img3;
+            Size6.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            Size6.VerticalContentAlignment = VerticalAlignment.Stretch;
 
             string urisource4 = $"/Assets/7x7.png";
             Image img4 = new Image()
@@ -72,6 +78,9 @@ namespace SubSweeper
             Size7.Padding = new Thickness(0, 0, 0, 0);
             Size7.BorderThickness = new Thickness(0, 0, 0, 0);
             Size7.Content = img4;
+            Size7.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            Size7.VerticalContentAlignment = VerticalAlignment.Stretch;
+
         }
 
         private void Size4_Click(object sender, RoutedEventArgs e)

@@ -82,6 +82,11 @@ namespace SubSweeper
             ShipGrid.Children.Clear();
             ShipGrid.RowDefinitions.Clear();
             ShipGrid.ColumnDefinitions.Clear();
+            ShipGrid.Width = Math.Min(ShipParentGrid.ActualWidth, ShipParentGrid.ActualHeight);
+            ShipGrid.Height = Math.Min(ShipParentGrid.ActualWidth, ShipParentGrid.ActualHeight);
+            ShipGrid.Width -= ShipGrid.Margin.Right + ShipGrid.Margin.Left;
+            ShipGrid.Height -= ShipGrid.Margin.Right + ShipGrid.Margin.Left;
+
 
             for (int row = 0; row < BOARD_SIZE; row++)
             {
@@ -97,7 +102,7 @@ namespace SubSweeper
                     button.Click += OnFired;
                     button.HorizontalAlignment = HorizontalAlignment.Stretch;
                     button.VerticalAlignment = VerticalAlignment.Stretch;
-                    button.Margin = new Thickness(2, 2, 2, 2);
+                    button.Margin = new Thickness(2);
                     Grid.SetRow(button, row);
                     Grid.SetColumn(button, col);
                     ShipGrid.Children.Add(button);
